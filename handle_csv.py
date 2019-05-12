@@ -5,6 +5,8 @@ import numpy as np
 import time
 from bottle import template
 import requests
+import chardet
+import importlib
 
 """
 
@@ -111,9 +113,10 @@ if __name__ == '__main__':
 
         html = template(TEMPLATE, items=context)
 
-        with open(INDEX_HTML, 'wt') as f:
-            f.write(html.encode('utf-8'))
-            print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-            print "=======success========"
+        with open(INDEX_HTML, mode='wt', encoding='utf-8') as f:
+            #html.encode('gbk')
+            f.write(html)
+            #print (html)
+            print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+            print ("=======success========")
             f.close()
-
